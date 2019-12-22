@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, li {
+  list-style: none
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  /* background: rgb(35, 36, 41); */
+  background: #f2f2f2;
+}
+
+input, button, select {
+  border-style: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+}
+
+.wrapper {
+  display: flex;
+  position: relative;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
+  background: #fff;
+  padding: 20px;
+}
+
+.login-wrapper input {
+  margin-bottom: 20px;
+  background: rgb(230, 230, 230);
+  width: 290px;
+  height: 54px;
+  padding: 0 20px 0 40px;
+  font-size: 18px;
+  border-radius: 2px;
+}
+
+.login-wrapper button {
+  height: 40px;
+  background: #ffc107;
+  color: rgb(0, 0, 0);
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.login-wrapper button:hover {
+  background: #000;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.fa-at,
+.fa-lock {
+  position: absolute;
+  transform: scale(1.2);
+  margin-left: 16px;
+  color: rgb(141, 141, 141);
+}
+
+.fa-at {
+  margin-top: 18px; 
+}
+
+.fa-lock {
+  margin-top: 92px;
+}
+
+/* ========== To-Do App ========== */
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout {
+  margin-left: 40%;
+  position: absolute;
+}
+
+.logout-btn {
+  display: block;
+  background: rgb(51, 51, 51);
+  color: #fff;
+  font-weight: bold;
+  padding: 20px 20px 20px 20px;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.37);
+  transition: padding 0.9s;
+}
+
+.logout-btn:hover {
+  padding-top: 40px;
+  transition: 0.7s;
+}
+
+.input-wrapper {
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.input-task {
+  border: none;
+  border: 1px solid rgb(233, 233, 232);
+  height: 48px;
+  width: 500px;
+  font-size: 22px;
+  padding-left: 12px;
+  color: rgb(68, 68, 68);
+}
+
+.input-btn {
+  width: 80px;
+  height: 48px;
+  background: #ffc107;
+  color: #000;
+  /* margin-left: 18px; */
+  font-size: 18px;
+  border-radius: 0 22px 22px 0;
+  margin-top: 0;
+}
+
+.input-btn:hover {
+  background: rgb(51, 51, 51);
+  color: #fff;
+  transition: 0.3s;
+}
+
+.list-wrapper {
+  position: relative;
+  background: #fff;
+  min-width: 600px;
+  width: 100%;
+  max-width: 700px;
+  border: 1px solid rgb(223, 223, 223);
+  margin-top: 70px;
+}
+
+.item-filter {
+  position: absolute;
+  top: -22px;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.item-filter select {
+  width: 100px;
+  border: 1px solid rgb(219, 219, 219);
+  font-size: 16px;
+}
+
+.item-wrapper {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 13px;
+}
+
+.item-wrapper:not(:last-child) {
+  border-bottom: 1px solid rgb(223, 223, 223);
+}
+
+.item-wrapper:hover {
+  background: rgb(223, 223, 223);
+}
+
+.item-wrapper span {
+  font-size: 22px;
+  margin-left: 10px;
+}
+
+.tasks-counter {
+  position: absolute;
+  right: -180px;
+  margin-top: 70px;
+  padding: 0 14px;
+  width: 180px;
+  flex-direction: column;
+}
+
+.counter {
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(223, 222, 222);
+  color: rgb(190, 190, 190);
+  cursor: pointer;
+}
+
+.counter:hover {
+  color: rgb(59, 59, 59);
+  transition: .2s;
+}
+
+.fa-trash-alt,
+.fa-check-circle {
+  font-size: 24px;
+  opacity: 0;
+  cursor: pointer;
+  color: rgb(119, 119, 119);
+}
+
+.fa-trash-alt {
+  margin-left: auto;
+}
+
+.item-wrapper:hover .fa-trash-alt,
+.item-wrapper:hover .fa-check-circle {
+  opacity: 1;
+}
+
+.fa-check-circle:hover {
+  color: #3f9c3c;
+}
+
+.iconChecked {
+  color: #3f9c3c;
+  opacity: 1;
+}
+
+.textChecked {
+  color: #B7B7B6;
+  text-decoration: line-through;
+}
+
+.fa-trash-alt:hover {
+  color: rgb(245, 41, 41);
+}
+
+.edit-task {
+  position: absolute;
+  left: 0;
+  font-size: 22px;
+  font-weight: 400;
+  width: 100%;
+  height: 39px;
+  padding-left: 4px;
+  padding-left: 45px;
+  font-style: italic ;
+  outline-color: rgb(77, 144, 254);
+  outline-style: auto;
+}
