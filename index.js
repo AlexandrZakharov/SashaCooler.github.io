@@ -1,4 +1,3 @@
-// AddItemComponent.js
 import Router from './src/router.js';
 
 window.onload = function() {
