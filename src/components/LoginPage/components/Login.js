@@ -14,7 +14,7 @@ export default class Login extends Component {
       <i class="fas fa-at"></i>
       <input type="email" class="" id="email" name="email" placeholder="Email" required>
       <i class="fas fa-lock"></i>
-      <input type="text" class="" id="password" name="password" placeholder="Password" required>
+      <input type="password" class="" id="password" name="password" placeholder="Password" required>
       <button id="signIn">Login</button>
     `
     this.anchor.querySelector('#signIn').addEventListener('click', () => {
