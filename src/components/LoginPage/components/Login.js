@@ -1,16 +1,12 @@
-// Сделать чтобы store брался не на прямую, а через props;
-//1uxfk3f3l13
-import Component from '../component.js';
-import store from '../../store/index.js';
+import Component from '../../../component.js';
 
-export default class LoginComponent extends Component {
-  constructor(app, settings) {
-    const template = document.getElementById("login").content.cloneNode(true)
-    app.append(template);
+export default class Login extends Component {
+  constructor(store) {
     super(
       store, 
       document.querySelector('.login-wrapper')
     );
+    this.store = store;
 
   }
   render() {
@@ -22,9 +18,9 @@ export default class LoginComponent extends Component {
       <button id="signIn">Login</button>
     `
     this.anchor.querySelector('#signIn').addEventListener('click', () => {
-      let email = app.querySelector('#email').value;
-      let password = app.querySelector('#password').value;
-      store.dispatch('login', {
+      let email = this.anchor.querySelector('#email').value;
+      let password = this.anchor.querySelector('#password').value;
+      this.store.dispatch('login', {
         email: email,
         password: password,
         redirect: 'list'

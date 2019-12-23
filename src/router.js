@@ -1,4 +1,5 @@
 import routerConfig from "./routerConfig.js";
+import store from '../store/index.js';
 
 export default class Router {
   constructor(anchor) {
@@ -12,7 +13,7 @@ export default class Router {
   }
 
   changeRoute(route) {
-    this.conf = routerConfig[route]; // 
+    this.conf = routerConfig[route];
 
     if(!this.conf) return;
 
@@ -21,7 +22,7 @@ export default class Router {
     }
 
     window.history.pushState(this.conf.data, '', this.conf.url);
-    this.component = new this.conf.component(this.anchor, this.conf.settings);
+    this.component = new this.conf.component(this.anchor, this.conf.settings, store);
     this.component.render();
   }
 }

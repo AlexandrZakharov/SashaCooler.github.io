@@ -1,10 +1,10 @@
-import ToDoPage from './pages/ToDoPage.js';
-import LoginComponent from './components/LoginComponent.js';
+import TodoPage from './components/TodoPage/index.js';
+import LoginPage from './components/LoginPage/index.js';
 export default {
   'login': {
     data: { route: 'login' },
     url: 'login',
-    component: LoginComponent,
+    component: LoginPage,
     settings: {
       redirect: 'list'
     },
@@ -12,7 +12,7 @@ export default {
   'list': {
     data: { route: 'list' },
     url: 'list',
-    component: ToDoPage,
+    component: TodoPage,
     settings: {
       redirect: 'login'
     },

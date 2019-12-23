@@ -1,12 +1,12 @@
-import Component from '../component.js';
-import store from '../../store/index.js';
+import Component from '../../../component.js';
 
 export default class LogoutButton extends Component {
-  constructor() {
+  constructor(store) {
     super(
       store,
       document.querySelector('.logout')
-    ) 
+    )
+    this.store = store; 
   }
   render() {
     this.anchor.innerHTML = `
@@ -14,7 +14,7 @@ export default class LogoutButton extends Component {
     `;
 
     this.anchor.querySelector('.logout-btn').addEventListener('click', () => {
-      store.dispatch('logout', {
+      this.store.dispatch('logout', {
         redirect: 'login'
       })
     })

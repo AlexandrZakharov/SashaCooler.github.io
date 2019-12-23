@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <!-- Icons -->
-  <link rel="stylesheet" href="libs/font-awesome/css/all.css">
-  <link rel="stylesheet" type="text/css" href="libs/fonts/fonts.css" />
+  <link rel="stylesheet" href="public/libs/font-awesome/css/all.css">
+  <link rel="stylesheet" type="text/css" href="public/libs/fonts/fonts.css" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
   
   <!-- Style -->
-  <link rel="stylesheet" href="style/main.css">
+  <link rel="stylesheet" href="public/style/main.css">
   <title>Document</title>
 </head>
 <body>
@@ -23,17 +23,17 @@
     <section class="wrapper">
       <div class="list-wrapper">
         <div id="item-filter" class="item-filter"><!-- Tasks filter --></div>
-        <div class="root"><!-- To-do App  --></div>
+        <div class="task-list"><!-- To-do App  --></div>
       </div>
       <div class="tasks-counter"><!-- Tasks counter --></div>
     </section>
   </template>
   <template id="login">
-    <div class="login-wrapper"><!-- Login  --></div>
+    <form method="POST" class="login-wrapper"><!-- Login  --></form>
   </template>
   <div class="page-wrapper">
-    <div id="app" class="app-wrapper"><!-- Root  --></div>
+    <div id="root" class="app-wrapper"><!-- Root  --></div>
   </div>
-  <script type="module" src="../index.js"></script>
+  <script type="module" src="index.js"></script>
 </body>
 </html>

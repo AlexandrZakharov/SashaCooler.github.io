@@ -1,18 +1,18 @@
-import Component from '../component.js';
-import store from '../../store/index.js';
+import Component from '../../../component.js';
 
 export default class FilterTasks extends Component {
-  constructor() {
+  constructor(store) {
     super(
       store,
       document.querySelector('.item-filter')
-    ) 
+    )
+    this.store = store; 
   }
   render() {
     this.anchor.innerHTML = `
       <select id="select">
         ${
-          (store.state.filter.map((flt) => {
+          (this.store.state.filter.map((flt) => {
             return (
               `<option id="${flt}">${flt}</option>`
             )
@@ -20,9 +20,9 @@ export default class FilterTasks extends Component {
         }
       </select>
     `
-    this.anchor.querySelector('#select').addEventListener('change', function () {
-      console.log(this.value)
-      store.dispatch('filter', this.value)
+    let select = this.anchor.querySelector('#select')
+    select.addEventListener('change', () => {
+      this.store.dispatch('filter', select.value)
     })  
   }
 }

@@ -1,12 +1,12 @@
-import Component from '../component.js';
-import store from '../../store/index.js';
+import Component from '../../../component.js';
 
 export default class InputTask extends Component {
-  constructor() {
+  constructor(store) {
     super(
       store,
       document.querySelector('.input-wrapper')
-    ) 
+    )
+    this.store = store; 
   }
   render() {
     this.anchor.innerHTML = `
@@ -23,7 +23,7 @@ export default class InputTask extends Component {
       let value = input.value.trim();
 
       if(value.length > 5) {
-        store.dispatch('addItem', value);
+        this.store.dispatch('addItem', value);
         input.focus();
         input.value = '';
       } else alert('To-do item should contain more then 5 characters')

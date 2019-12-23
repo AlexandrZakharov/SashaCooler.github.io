@@ -1,29 +1,27 @@
-// Сделать чтобы store брался не на прямую, а через props;
+import Component from '../../../component.js';
 
-import Component from '../component.js';
-import store from '../../store/index.js';
-
-export default class ListComponent extends Component {
-  constructor() {
+export default class TaskList extends Component {
+  constructor(store) {
     super(
       store, 
-      document.querySelector('.root')
+      document.querySelector('.task-list')
     );
+    this.store = store;
 
   }
   render() {
-    if(store.state.todo.length === 0) {
+    if(this.store.state.todo.length === 0) {
       this.anchor.innerHTML = `No todo's`;
       return
     }
     this.anchor.innerHTML = `
       <ul>
         ${
-          store.state.todo.map(todoItem => {
-            if(store.state.filter[0] == 'Done' && !todoItem.completed) {
+          this.store.state.todo.map(todoItem => {
+            if(this.store.state.filter[0] == 'Done' && !todoItem.completed) {
               return;
             }
-            else if(store.state.filter[0] == 'Not done' && todoItem.completed) {
+            else if(this.store.state.filter[0] == 'Not done' && todoItem.completed) {
               return
             }
             let LINE = todoItem.completed ? 'textChecked': '';
@@ -40,30 +38,31 @@ export default class ListComponent extends Component {
 
     this.anchor.querySelectorAll('.item-wrapper').forEach((task) => {
       task.querySelector('.fa-trash-alt').addEventListener('click', () => {
-        store.dispatch('removeItem', {
+        this.store.dispatch('removeItem', {
           id: task.id
         })
       })
       task.querySelector('.fa-check-circle').addEventListener('click', () => {
-        store.dispatch('checkItem', {
+        this.store.dispatch('checkItem', {
           id: task.id,
           completed: JSON.parse(task.getAttribute("completed"))
         })
       })
-      task.querySelector('span').addEventListener('click', function() {
-        let taskText = this.innerText;
+      let span = task.querySelector('span');
+      span.addEventListener('click', () => {
+        let taskText = span.innerText;
         let input = document.createElement('input')
         input.value = taskText;
         input.type = "text";
         input.className = 'edit-task';
-        this.replaceWith(input)
+        span.replaceWith(input)
         input.focus()
         input.onblur = () => {
-          input.replaceWith(this)
+          input.replaceWith(span)
         }
         input.addEventListener('keyup', (event) => {
           if(event.keyCode == 13) {
-            store.dispatch('editTask', {
+            this.store.dispatch('editTask', {
               id: task.id,
               text: input.value
             })
