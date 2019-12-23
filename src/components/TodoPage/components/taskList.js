@@ -11,7 +11,9 @@ export default class TaskList extends Component {
   }
   render() {
     if(this.store.state.todo.length === 0) {
-      this.anchor.innerHTML = `You have no tasks :)`;
+      this.anchor.innerHTML = `
+        <div class="no-tasks">You have no tasks :)</div>
+      `;
       return
     }
     this.anchor.innerHTML = `

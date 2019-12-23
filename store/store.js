@@ -1,8 +1,5 @@
 import Observer from './observer.js';
 import link from '../src/link.js';
-const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjVkZjhhMzk1MmVhNzBjMDAxNjgyNmQ2MCIsImVtYWlsIjoiYWxleC56YWtoYXJvdjI4MDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkdmR0NVBpd2tWYXM0N25leThaNUJkdTZjYmlDcVJZSVJ2b0lKczZJV25Td1FUYi9kZEYzODYiLCJ1c2VybmFtZSI6ItCQ0LvQtdC60YHQsNC90LTRgCDQl9Cw0YXQsNGA0L7QsiIsIl9fdiI6MH0sImlhdCI6MTU3NjYwNDU5OH0.mDb7G93uNVIVTCIwaVp4IS3bEKNNDYzvzmiABWvziWk"
-
-// import requests from '../requests.js';
 
 export default class Store {
   constructor(reducers) {
@@ -27,11 +24,8 @@ export default class Store {
       return response.json();
     })
     .then(data => {
-      console.log('On Init data: ',data)
       this.state.todo = [...data];
       this.state.todo.reverse();
-      console.log('State after reverse: ', this.state.todo)
-      console.log('Data after reverse: ', data)
       if(redirect) link(redirect)
     })
   }
@@ -59,8 +53,6 @@ export default class Store {
         .then(data => {
           this.state.todo.unshift(data);
           this.events.next('change', this.state);
-          console.log('STATE:', this.state)
-          console.log('DATA:', data)
         });
         break;
       case "removeItem":
@@ -71,12 +63,6 @@ export default class Store {
             Authorization: this.state.userInfo.token
           }
         })
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          console.log(data);
-        });
         break;
       case "checkItem":
         fetch(`https://todo-app-back.herokuapp.com/todos/${payload.id}`, {
@@ -120,6 +106,8 @@ export default class Store {
           if(!data.error) {
             this.state.userInfo.token = data.token;
             this.onInitState(payload.redirect)
+          } else {
+            alert('Wrong e-mail or password!')
           }
         })
         break;

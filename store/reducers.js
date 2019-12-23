@@ -1,17 +1,5 @@
 export default function createReducers() {
   return {
-    // addItem: (payload, state) => {
-    //   return {
-    //     ...state,
-    //     todo: [
-    //       ...state.todo,
-    //       {
-    //         text: payload,
-    //         done: false
-    //       }
-    //     ]
-    //   };
-    // },
     removeItem: (payload, state) => ({
       ...state,
       todo: [

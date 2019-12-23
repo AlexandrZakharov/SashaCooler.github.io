@@ -26,7 +26,7 @@ export default class InputTask extends Component {
         this.store.dispatch('addItem', value);
         input.focus();
         input.value = '';
-      } else alert('To-do item should contain more then 5 characters')
+      } else alert('Task text must contain at least 5 characters')
     }
     submit.addEventListener('click', handeClick);
     input.addEventListener('keyup', handeClick);

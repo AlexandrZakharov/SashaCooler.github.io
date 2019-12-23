@@ -7,7 +7,6 @@ export default class Login extends Component {
       document.querySelector('.login-wrapper')
     );
     this.store = store;
-
   }
   render() {
     this.anchor.innerHTML = `

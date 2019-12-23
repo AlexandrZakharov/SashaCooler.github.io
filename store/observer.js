@@ -16,10 +16,10 @@ export default class Observer {
   }
 
   next(event, payload) {
-    // if(this.subscribers[event]) {
-    //   console.warn('Event not supported', event);
-    //   return;
-    // }
+    if(!this.subscribers[event]) {
+      console.warn('Event not supported', event);
+      return;
+    }
 
     this.subscribers[event].forEach(cb => cb(payload));
   }
